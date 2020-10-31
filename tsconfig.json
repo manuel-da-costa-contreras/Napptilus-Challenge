@@ -1,0 +1,19 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "ES5",
+    "forceConsistentCasingInFileNames": false,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "types": ["jest", "node"],
+    "lib": ["es6", "dom"],
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "typeRoots": ["./node_modules/@types", "./src/@types"],
+    "baseUrl": "./"
+  },
+  "exclude": ["node_modules", "dist", "test", "**/*.test.ts", "**/*.test.tsx"]
+}
