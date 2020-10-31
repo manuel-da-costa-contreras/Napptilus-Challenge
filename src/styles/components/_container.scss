@@ -1,0 +1,14 @@
+.container {
+  max-width: 48rem;
+  min-width: 35rem;
+  margin: 0 auto;
+  padding: 0.8rem 2.4rem;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .container {
+    max-width: 135rem;
+    margin: 0 auto;
+    padding: 0.8rem 10.4rem;
+  }
+}

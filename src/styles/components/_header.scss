@@ -1,0 +1,36 @@
+.header {
+  margin-bottom: 1.2rem;
+
+  & img {
+    border-style: none;
+    max-height: 2.6rem;
+    margin: auto 0;
+  }
+}
+
+.header--title {
+  color: $pure-black;
+  font-size: 2.4rem;
+  margin: auto 0;
+  padding-left: 3.2rem;
+}
+
+.container--header {
+  display: flex;
+  background: darken($off-grey, 10%);
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .header {
+    padding: 0.8rem 6.4rem;
+    margin-bottom: 2.6rem;
+
+    & img {
+      max-height: 3.2rem;
+    }
+
+    .header--title {
+      font-weight: bold;
+    }
+  }
+}

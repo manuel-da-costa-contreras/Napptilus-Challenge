@@ -1,0 +1,77 @@
+.table__header {
+  margin-bottom: 4.2rem;
+  height: 18.5rem;
+  display: grid;
+  grid-template-areas: 'table__header--title' 'table__header--search-bar';
+}
+
+.table--title {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+  margin: auto 0;
+
+  & > h2 {
+    color: darken($off-grey, 40%);
+  }
+}
+
+.table--search-bar {
+  display: flex;
+  border-radius: 8px;
+  border: 1px solid darken($off-grey, 20%);
+  max-width: 20rem;
+  max-height: 4rem;
+  margin-left: auto;
+
+  & > span > img {
+    height: 1.8rem;
+    padding: 0.4rem 0.8rem;
+    margin: 0.6rem 0;
+    border-left: 1px solid darken($off-grey, 20%);
+  }
+
+  & > input {
+    height: 50%;
+    width: 80%;
+    padding: 0 2rem;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.table-pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.table-search-bar-container {
+  display: flex;
+  margin: auto 0 auto auto;
+}
+
+.table-title {
+  margin: auto 0;
+}
+
+.table-search-bar {
+  height: 2.5rem;
+  margin: auto 0;
+}
+
+.table__container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .table--search-bar {
+    margin-right: 6.8rem;
+  }
+}

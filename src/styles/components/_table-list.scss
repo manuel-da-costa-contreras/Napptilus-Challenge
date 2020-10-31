@@ -1,0 +1,55 @@
+.table--column {
+  margin: 0 auto 4.2rem;
+
+  & > a {
+    & > img {
+      width: 35rem;
+      height: 23rem;
+      object-fit: cover;
+      margin-bottom: 0.8rem;
+    }
+
+    & > h3 {
+      max-width: 39.4rem;
+    }
+
+    & > p {
+      font-size: 1.85rem;
+    }
+
+    & > p:last-child {
+      font-style: italic;
+    }
+
+    &:link,
+    &:visited,
+    &:active {
+      text-decoration: none;
+
+      & > h3 {
+        color: $pure-black;
+        transition: 0.25s ease-in-out;
+      }
+      & > p {
+        color: darken($off-grey, 40%);
+      }
+    }
+
+    &:hover {
+      & > h3 {
+        color: $light-blue;
+        transition: 0.25s ease-in-out;
+      }
+    }
+  }
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .table--column {
+    & > img {
+      width: 43rem;
+      height: 26rem;
+      margin-bottom: 5.6rem;
+    }
+  }
+}

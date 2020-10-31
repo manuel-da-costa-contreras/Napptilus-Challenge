@@ -1,0 +1,38 @@
+.detailed__wrapper {
+  display: grid;
+  grid-template-areas: 'img--wrapper title--wrapper';
+}
+
+.img--wrapper {
+  width: 65rem;
+  height: 43rem;
+  object-fit: cover;
+  margin-left: auto;
+}
+
+.title--wrapper {
+  max-width: 45rem;
+  word-break: break-word;
+  padding-left: 2.6rem;
+
+  & > div:first-child > p {
+    padding-top: 0.6rem;
+    color: darken($off-grey, 40%);
+
+    &:last-child {
+      padding-top: 0.6rem;
+      font-style: italic;
+    }
+  }
+
+  & > div:last-child {
+    padding-top: 3.2rem;
+    max-height: 32.9rem;
+    overflow-y: hidden;
+    line-height: 3rem;
+
+    & > h1 {
+      font-size: 2.6rem;
+    }
+  }
+}

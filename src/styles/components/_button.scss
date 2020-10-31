@@ -1,0 +1,35 @@
+.primary-button {
+  width: 160px;
+  height: 50px;
+  margin: 0.8rem;
+  background: $primary-button;
+  color: $pure-white;
+  border-radius: 12px;
+  border: none;
+  border-bottom: 0.4rem solid darken($primary-button, 10%);
+  outline: none;
+  transition: all 0.1s ease-in;
+}
+
+.secondary-button {
+  width: 160px;
+  height: 50px;
+  margin: 0.8rem;
+  background: $secondary-button;
+  color: $pure-white;
+  border-radius: 12px;
+  border: none;
+  border-bottom: 0.4rem solid darken($secondary-button, 10%);
+  outline: none;
+  transition: all 0.1s ease-in;
+}
+
+.option-button {
+  width: 65px;
+  height: 25px;
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+  transform: translate(0, -2.85px);
+}

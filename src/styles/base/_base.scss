@@ -1,0 +1,45 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: $pure-white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: $m-size;
+}
+
+h1 {
+  margin: 0;
+  font-size: 4.2rem;
+  font-weight: lighter;
+}
+
+h2 {
+  margin: 0;
+  font-size: 3.2rem;
+  font-weight: lighter;
+}
+
+h3 {
+  margin: 0;
+  font-weight: lighter;
+  font-size: 3.6rem;
+}
+
+h4 {
+  margin: 0;
+  font-weight: lighter;
+  font-size: 2.4rem;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
