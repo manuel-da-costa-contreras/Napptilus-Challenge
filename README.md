@@ -1,4 +1,4 @@
-# Boilerplate Manager
+# Napptilus-Challenge Manager
 
 \*\* To run the Application just type "yarn dev-server" or "npm run dev-server"
 
