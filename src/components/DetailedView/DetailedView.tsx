@@ -6,23 +6,45 @@ import { getDetailedData } from '../../api';
 import { DataPerson } from '../../models';
 import { DetailedViewProps } from './DetailedView-props';
 
+interface DetailedViewModel {
+  person: DataPerson;
+  date?: number;
+  id?: number;
+}
+
 const DetailedView = (props: DetailedViewProps): ReactElement => {
   const [person, setPerson] = useState<DataPerson>(null);
 
+  // Only to check if data is from today.
+  useEffect(() => {
+    const json = localStorage.getItem('detailed-view');
+    const data: Array<DetailedViewModel> = JSON.parse(json);
+    const date = new Date().getDate();
+
+    if (data[0].date !== date) {
+      localStorage.removeItem('detailed-view');
+    }
+  }, []);
+
+  /**
+   * Check if data exists in local storage, if not, makes the call with the ID and
+   * saves it in local storage.
+   */
   useEffect(() => {
     const json = localStorage.getItem('detailed-view');
     const id = props.match.params.id;
-    const storageItem: Array<DataPerson> = JSON.parse(json) || [];
+    const storageItem: Array<DetailedViewModel> = JSON.parse(json) || [];
     const item = storageItem.find((item) => item.id == id);
+    const date = new Date().getDate();
 
-    if (item) {
-      setPerson(item);
+    if (item && item.date == date) {
+      setPerson(item.person);
     } else {
       (async (): Promise<void> => {
         const data: DataPerson = await getDetailedData(id);
 
         setPerson(data);
-        storageItem.push({ ...data, id });
+        storageItem.push({ person: data, date, id });
         localStorage.setItem('detailed-view', JSON.stringify(storageItem));
       })();
     }
