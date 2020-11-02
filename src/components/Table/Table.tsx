@@ -28,7 +28,7 @@ export const Table = (props: TableProps): ReactElement => {
         );
       });
     setFilteredTable(filteredTable);
-  }, [props.filters.searchText]);
+  }, [props.filters.searchText, props.oompasData]);
 
   return (
     <div className="container">
