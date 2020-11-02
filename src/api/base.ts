@@ -18,7 +18,6 @@ axiosRetry(axiosInstance, {
 
 export default axiosInstance;
 
-// TODO: still needs ref
 export async function get(
   url: string,
   config?: AxiosRequestConfig
