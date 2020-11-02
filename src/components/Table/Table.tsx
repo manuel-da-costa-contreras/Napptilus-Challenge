@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 
 import { TableProps } from './Table-props';
 import { TableItem } from './TableList/TableList';
@@ -7,22 +7,28 @@ import { DataPerson } from '../../models/DataModel';
 export const Table = (props: TableProps): ReactElement => {
   const searchLogo =
     'https://s3.eu-central-1.amazonaws.com/napptilus/level-test/imgs/ic_search.png';
-  // TODO: Change to a filtered table in parent component
-  const filteredTable =
-    props.oompasData &&
-    props.oompasData.filter((item) => {
-      return (
-        item.first_name
-          .concat(item.last_name)
-          .toLowerCase()
-          .includes(props.filters.searchText) ||
-        item.last_name
-          .concat(item.first_name)
-          .toLowerCase()
-          .includes(props.filters.searchText) ||
-        item.profession.toLowerCase().includes(props.filters.searchText)
-      );
-    });
+  const [filteredTable, setFilteredTable] = useState<DataPerson[]>(
+    props.oompasData
+  );
+
+  useEffect(() => {
+    const filteredTable: DataPerson[] =
+      props.oompasData &&
+      props.oompasData.filter((item) => {
+        return (
+          item.first_name
+            .concat(item.last_name)
+            .toLowerCase()
+            .includes(props.filters.searchText) ||
+          item.last_name
+            .concat(item.first_name)
+            .toLowerCase()
+            .includes(props.filters.searchText) ||
+          item.profession.toLowerCase().includes(props.filters.searchText)
+        );
+      });
+    setFilteredTable(filteredTable);
+  }, [props.filters.searchText]);
 
   return (
     <div className="container">
@@ -43,12 +49,11 @@ export const Table = (props: TableProps): ReactElement => {
         </div>
       </div>
       <div className="table__container">
-        {props.oompasData &&
-          filteredTable.map((item: DataPerson) => (
-            <React.Fragment key={item.id}>
-              <TableItem singleItem={item} />
-            </React.Fragment>
-          ))}
+        {filteredTable.map((item: DataPerson) => (
+          <React.Fragment key={item.id}>
+            <TableItem singleItem={item} />
+          </React.Fragment>
+        ))}
       </div>
     </div>
   );
