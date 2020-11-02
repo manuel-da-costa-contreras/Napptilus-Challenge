@@ -35,11 +35,14 @@ export function CatalogueApp(): ReactElement {
   };
 
   /**
-   * Effect to listen to the scroll, as soon it reaches the end
+   * Effect to listen to the scroll, as soon as it reaches the end
    * calls for new data
    */
 
   useEffect(() => {
+    const json = localStorage.getItem('data');
+    const localItem: DataModel = JSON.parse(json);
+    const date = new Date().getDate();
     let winScroll = y;
     let height = document.body.offsetHeight;
 
@@ -47,10 +50,6 @@ export function CatalogueApp(): ReactElement {
       setMaxTop(true);
       if (maxTop) {
         (async (): Promise<void> => {
-          const json = localStorage.getItem('data');
-          const localItem: DataModel = JSON.parse(json);
-          const date = new Date().getDate();
-
           if (localItem.current !== localItem.current + 1) {
             const data: DataModel = await getData(localItem.current + 1);
 
