@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-const NotFoundPage = () => <div>Page not Found</div>;
+const NotFoundPage = (): ReactElement => {
+  return <div>Page not Found</div>;
+};
 
 export default NotFoundPage;
