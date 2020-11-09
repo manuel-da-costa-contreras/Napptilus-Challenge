@@ -18,5 +18,6 @@ coverage
 .yarn-integrity
 
 # scripts generated file
-dist/scripts
-dist/test
+dist
+
+
