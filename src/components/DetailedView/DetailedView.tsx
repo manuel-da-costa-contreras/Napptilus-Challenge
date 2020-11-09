@@ -5,6 +5,7 @@ import Parser from 'html-react-parser';
 import { getDetailedData } from '../../api';
 import { DataPerson } from '../../models';
 import { DetailedViewProps } from './DetailedView-props';
+import Loader from 'react-spinners/RotateLoader';
 
 interface DetailedViewModel {
   person: DataPerson;
@@ -14,6 +15,7 @@ interface DetailedViewModel {
 
 const DetailedView = (props: DetailedViewProps): ReactElement => {
   const [person, setPerson] = useState<DataPerson>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   // Only to check if data is from today.
   useEffect(() => {
@@ -21,7 +23,7 @@ const DetailedView = (props: DetailedViewProps): ReactElement => {
     const data: Array<DetailedViewModel> = JSON.parse(json);
     const date = new Date().getDate();
 
-    if (data[0].date !== date) {
+    if (data && data[0].date !== date) {
       localStorage.removeItem('detailed-view');
     }
   }, []);
@@ -36,19 +38,33 @@ const DetailedView = (props: DetailedViewProps): ReactElement => {
     const storageItem: Array<DetailedViewModel> = JSON.parse(json) || [];
     const item = storageItem.find((item) => item.id == id);
     const date = new Date().getDate();
+    try {
+      if (item && item.date == date) {
+        setPerson(item.person);
+      } else {
+        (async (): Promise<void> => {
+          const data: DataPerson = await getDetailedData(id);
 
-    if (item && item.date == date) {
-      setPerson(item.person);
-    } else {
-      (async (): Promise<void> => {
-        const data: DataPerson = await getDetailedData(id);
-
-        setPerson(data);
-        storageItem.push({ person: data, date, id });
-        localStorage.setItem('detailed-view', JSON.stringify(storageItem));
-      })();
+          setPerson(data);
+          storageItem.push({ person: data, date, id });
+          localStorage.setItem('detailed-view', JSON.stringify(storageItem));
+        })();
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
     }
   }, [props.match.params.id]);
+
+  // Early Return
+  if (loading) {
+    return (
+      <div className="loader__wrapper">
+        <Loader size={15} loading={loading} />
+      </div>
+    );
+  }
 
   return (
     <div className="container">
