@@ -54,8 +54,8 @@ const DetailedView = (props: DetailedViewProps): ReactElement => {
     <div className="container">
       {person && (
         <div className="detailed__wrapper">
-          {person.image && <img className="img--wrapper" src={person.image} />}
-          <div className="title--wrapper">
+          {person.image && <img className="img__wrapper" src={person.image} />}
+          <div className="title__wrapper">
             <div>
               <h3>
                 {person.first_name && person.first_name}{' '}
