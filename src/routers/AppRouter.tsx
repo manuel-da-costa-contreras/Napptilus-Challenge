@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Local Imports
-import { CatalogueApp } from '../pages/Main/DeveloperCatalogue';
+import { CatalogueApp } from '../components/Main-Route-Layout/DeveloperCatalogue';
 import { DetailedView } from '../components/DetailedView';
 import Header from '../components/Header/Header';
 import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
