@@ -5,8 +5,6 @@ import { TableItem } from './TableList/TableList';
 import { DataPerson } from '../../models/DataModel';
 
 export const Table = (props: TableProps): ReactElement => {
-  const searchLogo =
-    'https://s3.eu-central-1.amazonaws.com/napptilus/level-test/imgs/ic_search.png';
   const [filteredTable, setFilteredTable] = useState<DataPerson[]>(
     props.oompasData
   );
@@ -33,16 +31,6 @@ export const Table = (props: TableProps): ReactElement => {
   return (
     <div className="container">
       <div className="table__header">
-        <div className="table--search-bar">
-          <input
-            className="table-search-bar"
-            placeholder={props.searchBarPlaceholder}
-            onChange={props.searchBarText}
-          />
-          <span>
-            <img src={searchLogo} />
-          </span>
-        </div>
         <div className="table--title">
           <h1> {props.tableTitle} </h1>
           <h2> {props.tableSubText} </h2>
@@ -62,5 +50,4 @@ export const Table = (props: TableProps): ReactElement => {
 Table.defaultProps = {
   tableTitle: 'Find your Oompa Loompa',
   tableSubText: 'There are more than 100k',
-  searchBarPlaceholder: 'Search',
 };
