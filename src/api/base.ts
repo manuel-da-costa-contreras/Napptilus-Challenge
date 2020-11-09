@@ -1,6 +1,9 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import axiosRetry, { exponentialDelay } from 'axios-retry';
 
+export const URL =
+  'https://2q2woep105.execute-api.eu-west-1.amazonaws.com/napptilus/oompa-loompas';
+
 let axiosInstance: AxiosInstance;
 
 axiosInstance = axios.create({

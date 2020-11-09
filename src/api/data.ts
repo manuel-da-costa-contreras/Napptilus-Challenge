@@ -1,19 +1,13 @@
-import { get } from './base';
+import { get, URL } from './base';
 
 export async function getData(page?: number): Promise<any> {
-  const response = await get(
-    `https://2q2woep105.execute-api.eu-west-1.amazonaws.com/napptilus/oompa-loompas${
-      page && `?page=${page}`
-    }`
-  );
+  const response = await get(`${URL}/${page && `?page=${page}`}`);
 
   return response;
 }
 
 export async function getDetailedData(id: number): Promise<any> {
-  const response = await get(
-    `https://2q2woep105.execute-api.eu-west-1.amazonaws.com/napptilus/oompa-loompas/${id}`
-  );
+  const response = await get(`${URL}/${id}`);
 
   return response;
 }
