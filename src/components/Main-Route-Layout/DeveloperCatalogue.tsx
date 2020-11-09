@@ -4,20 +4,11 @@ import Loader from 'react-spinners/RotateLoader';
 
 import { DataModel, DataPerson } from 'src/models/DataModel';
 import { Filters } from 'src/models/FiltersModel';
-import { Table } from '../../components/Table/Table';
+import { Table } from '../Table/Table';
 import { getData } from '../../api/data';
 
 import { useScroll } from '../../shared/hooks/useScroll';
-
-// Loader Override Css
-const override = `
-    display: block;
-    margin: 0 auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  `;
+import { SearchBar } from '../Search/Search';
 
 export function CatalogueApp(): ReactElement {
   const [loading, setLoading] = useState<boolean>(true);
@@ -111,17 +102,16 @@ export function CatalogueApp(): ReactElement {
   // Early Return
   if (loading) {
     return (
-      <Loader size={15} color={'#1B80DB'} loading={loading} css={override} />
+      <div className="loader__wrapper">
+        <Loader size={15} loading={loading} />
+      </div>
     );
   }
 
   return (
     <div>
-      <Table
-        searchBarText={onChangeTextFilter}
-        filters={filters}
-        oompasData={oompas}
-      />
+      <SearchBar searchBarText={onChangeTextFilter} />
+      <Table filters={filters} oompasData={oompas} />
     </div>
   );
 }
