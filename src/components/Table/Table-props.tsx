@@ -1,5 +1,5 @@
-import { DataPerson } from 'src/models/DataModel';
-import { Filters } from 'src/models/FiltersModel';
+import { DataPerson } from 'src/models/Data';
+import { Filters } from 'src/models/Filters';
 
 export interface TableProps {
   oompasData: DataPerson[];

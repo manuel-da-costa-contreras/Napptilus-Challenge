@@ -1,2 +1,2 @@
-export * from './DataModel';
-export * from './FiltersModel';
+export * from './Data';
+export * from './Filters';

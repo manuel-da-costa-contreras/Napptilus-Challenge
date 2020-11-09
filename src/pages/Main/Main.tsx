@@ -2,13 +2,13 @@ import React, { ReactElement, useState, useEffect } from 'react';
 
 import Loader from 'react-spinners/RotateLoader';
 
-import { DataModel, DataPerson } from 'src/models/DataModel';
-import { Filters } from 'src/models/FiltersModel';
-import { Table } from '../Table/Table';
+import { DataModel, DataPerson } from 'src/models/Data';
+import { Filters } from 'src/models/Filters';
+import { Table } from '../../components/Table/Table';
 import { getData } from '../../api/data';
 
 import { useScroll } from '../../shared/hooks/useScroll';
-import { SearchBar } from '../Search/Search';
+import { SearchBar } from '../../components/Search/Search';
 
 export function CatalogueApp(): ReactElement {
   const [loading, setLoading] = useState<boolean>(true);

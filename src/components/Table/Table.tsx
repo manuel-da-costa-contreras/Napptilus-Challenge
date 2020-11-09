@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect, useState } from 'react';
 
 import { TableProps } from './Table-props';
 import { TableItem } from './TableList/TableList';
-import { DataPerson } from '../../models/DataModel';
+import { DataPerson } from '../../models/Data';
 
 export const Table = (props: TableProps): ReactElement => {
   const [filteredTable, setFilteredTable] = useState<DataPerson[]>(

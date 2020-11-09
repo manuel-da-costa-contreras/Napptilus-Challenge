@@ -1,4 +1,4 @@
-import { DataPerson } from 'src/models/DataModel';
+import { DataPerson } from 'src/models/Data';
 
 export interface TableListProps {
   singleItem: DataPerson;

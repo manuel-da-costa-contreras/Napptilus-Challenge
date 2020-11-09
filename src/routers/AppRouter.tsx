@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Local Imports
-import { CatalogueApp } from '../components/Main-Route-Layout/DeveloperCatalogue';
-import { DetailedView } from '../components/DetailedView';
+import { CatalogueApp } from '../pages/Main/Main';
+import { DetailedView } from '../pages/DetailedView';
 import Header from '../components/Header/Header';
-import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
+import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 
 const AppRouter = () => (
   <Router>
