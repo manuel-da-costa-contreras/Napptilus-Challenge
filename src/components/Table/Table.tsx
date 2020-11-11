@@ -2,15 +2,15 @@ import React, { ReactElement, useEffect, useState } from 'react';
 
 import { TableProps } from './Table-props';
 import { TableItem } from './TableList/TableList';
-import { DataPerson } from '../../models/Data';
+import { Person } from '../../models/Data';
 
 export const Table = (props: TableProps): ReactElement => {
-  const [filteredTable, setFilteredTable] = useState<DataPerson[]>(
+  const [filteredTable, setFilteredTable] = useState<Person[]>(
     props.oompasData
   );
 
   useEffect(() => {
-    const filteredTable: DataPerson[] =
+    const filteredTable: Person[] =
       props.oompasData &&
       props.oompasData.filter((item) => {
         return (
@@ -37,7 +37,7 @@ export const Table = (props: TableProps): ReactElement => {
         </div>
       </div>
       <div className="table__container">
-        {filteredTable.map((item: DataPerson) => (
+        {filteredTable.map((item: Person) => (
           <React.Fragment key={item.id}>
             <TableItem singleItem={item} />
           </React.Fragment>

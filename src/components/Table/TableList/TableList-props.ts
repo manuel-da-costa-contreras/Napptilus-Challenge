@@ -1,5 +1,5 @@
-import { DataPerson } from 'src/models/Data';
+import { Person } from 'src/models/Data';
 
 export interface TableListProps {
-  singleItem: DataPerson;
+  singleItem: Person;
 }

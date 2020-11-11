@@ -1,11 +1,11 @@
-export interface DataModel {
+export interface Data {
   current: number;
   total: number;
-  results: DataPerson[];
+  results: Person[];
   date?: number;
 }
 
-export interface DataPerson {
+export interface Person {
   first_name: string;
   last_name: string;
   favorite: {

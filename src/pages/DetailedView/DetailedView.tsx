@@ -3,18 +3,18 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import Parser from 'html-react-parser';
 
 import { getDetailedData } from '../../api';
-import { DataPerson } from '../../models';
+import { Person } from '../../models';
 import { DetailedViewProps } from './DetailedView-props';
 import Loader from 'react-spinners/RotateLoader';
 
 interface DetailedViewModel {
-  person: DataPerson;
+  person: Person;
   date?: number;
   id?: number;
 }
 
 const DetailedView = (props: DetailedViewProps): ReactElement => {
-  const [person, setPerson] = useState<DataPerson>(null);
+  const [person, setPerson] = useState<Person>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   // Only to check if data is from today.
@@ -43,7 +43,7 @@ const DetailedView = (props: DetailedViewProps): ReactElement => {
         setPerson(item.person);
       } else {
         (async (): Promise<void> => {
-          const data: DataPerson = await getDetailedData(id);
+          const data: Person = await getDetailedData(id);
 
           setPerson(data);
           storageItem.push({ person: data, date, id });
