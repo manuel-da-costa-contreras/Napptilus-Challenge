@@ -2,7 +2,7 @@ import React, { ReactElement, useState, useEffect } from 'react';
 
 import Loader from 'react-spinners/RotateLoader';
 
-import { DataModel, DataPerson } from 'src/models/Data';
+import { Data, Person } from 'src/models/Data';
 import { Filters } from 'src/models/Filters';
 import { Table } from '../../components/Table/Table';
 import { getData } from '../../api/data';
@@ -10,12 +10,12 @@ import { getData } from '../../api/data';
 import { useScroll } from '../../shared/hooks/useScroll';
 import { SearchBar } from '../../components/Search/Search';
 
-export function CatalogueApp(): ReactElement {
+export function MainLayout(): ReactElement {
   const [loading, setLoading] = useState<boolean>(true);
   const [filters, setFilters] = useState<Filters>({
     searchText: '',
   });
-  const [oompas, setOompas] = useState<DataPerson[]>([]);
+  const [oompas, setOompas] = useState<Person[]>([]);
   const [maxTop, setMaxTop] = useState<boolean>(false);
   const { y } = useScroll();
 
@@ -32,19 +32,20 @@ export function CatalogueApp(): ReactElement {
 
   useEffect(() => {
     const json = localStorage.getItem('data');
-    const localItem: DataModel = JSON.parse(json);
+    const localItem: Data = JSON.parse(json);
     const date = new Date().getDate();
-    let winScroll = y;
     let height = document.body.offsetHeight;
 
-    if (height < winScroll + height / 5) {
+    const scrollLength = 1600;
+
+    if (height <= y + scrollLength) {
       setMaxTop(true);
       if (maxTop) {
         (async (): Promise<void> => {
           if (localItem.current !== localItem.current + 1) {
-            const data: DataModel = await getData(localItem.current + 1);
+            const data: Data = await getData(localItem.current + 1);
 
-            const newData: DataModel = {
+            const newData: Data = {
               current: data.current,
               total: data.total,
               results: [...localItem.results, ...data.results],
@@ -68,7 +69,7 @@ export function CatalogueApp(): ReactElement {
 
   useEffect(() => {
     const json = localStorage.getItem('data');
-    const localItem: DataModel = JSON.parse(json);
+    const localItem: Data = JSON.parse(json);
     const date = new Date().getDate();
 
     if (
