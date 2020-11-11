@@ -15,8 +15,3 @@ export const TableItem = (props: TableListProps): ReactElement => (
     </Link>
   </div>
 );
-
-TableItem.defaultProps = {
-  editButtonName: 'Edit',
-  removeButtonName: 'Delete',
-};
