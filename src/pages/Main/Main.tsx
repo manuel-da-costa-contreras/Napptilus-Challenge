@@ -34,11 +34,11 @@ export function MainLayout(): ReactElement {
     const json = localStorage.getItem('data');
     const localItem: Data = JSON.parse(json);
     const date = new Date().getDate();
-    let height = document.body.offsetHeight;
+    let maxHeight = document.body.offsetHeight;
 
     const scrollLength = 1600;
 
-    if (height <= y + scrollLength) {
+    if (maxHeight <= y + scrollLength) {
       setMaxTop(true);
       if (maxTop) {
         (async (): Promise<void> => {

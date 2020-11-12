@@ -74,7 +74,7 @@ const DetailedView = (props: DetailedViewProps): ReactElement => {
           <div className="title__wrapper">
             <div>
               <h3>
-                {person.first_name && person.first_name}{' '}
+                {person.first_name && person.first_name}
                 {person.last_name && person.last_name}
               </h3>
               {person.gender && <p>{person.gender == 'M' ? 'Man' : 'Woman'}</p>}
